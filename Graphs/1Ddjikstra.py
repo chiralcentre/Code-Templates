@@ -1,7 +1,7 @@
 from heapq import heappush,heappop
 
 INF = 1000000000 #use 1 billion to represent infinity
-def modifiedDjikstra(adjList,s,e):
+def modifiedDjikstra(adjList,N,s,e):
     D = [INF for _ in range(N)]; D[s] = 0
     PQ = []; heappush(PQ,(0,s))
     while PQ: #modified Djikstra's is used with O(M log M) time complexity
