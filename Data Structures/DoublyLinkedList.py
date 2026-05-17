@@ -18,6 +18,20 @@ class DoublyLinkedList:
         else:
             self.tail = new_node
         self.head = new_node #move head to point to new node
+        
+    #insert node before given node
+    def insertBefore(self, next_node, new_node):
+        if next_node == None:
+            print("given next node cannot be None")
+            return
+        insertHead = True if next_node == self.head else False
+        new_node.back = next_node.back
+        new_node.next = next_node
+        next_node.back = new_node
+        if new_node.back != None:
+            new_node.back.next = new_node
+        if insertHead:
+            self.head = new_node
     # insert node after given node
     def insertAfter(self,prev_node,new_node):
         if prev_node == None:
