@@ -10,6 +10,7 @@ class DoublyLinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
+
     # insert new node on front of list
     def pushFront(self,new_node):
         new_node.next = self.head
@@ -18,7 +19,17 @@ class DoublyLinkedList:
         else:
             self.tail = new_node
         self.head = new_node #move head to point to new node
-        
+
+    def pushBack(self, new_node):
+        # empty list
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.back = self.tail
+            self.tail.next = new_node
+            self.tail = new_node
+
     #insert node before given node
     def insertBefore(self, next_node, new_node):
         if next_node == None:
@@ -32,6 +43,7 @@ class DoublyLinkedList:
             new_node.back.next = new_node
         if insertHead:
             self.head = new_node
+
     # insert node after given node
     def insertAfter(self,prev_node,new_node):
         if prev_node == None:
@@ -45,6 +57,7 @@ class DoublyLinkedList:
             new_node.next.back = new_node
         if insertTail:
             self.tail = new_node
+
     # remove node
     def remove(self,node):
         if self.head == None or node == None:
